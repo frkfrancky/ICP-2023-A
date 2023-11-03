@@ -1,0 +1,260 @@
+Conversion du script GML : ${project_dir}\scripts\scr_load_models\scr_load_models.gml
+Description convertie /// @description scr_load_models()
+
+Conversion du script GML : ${project_dir}\scripts\scr_load_texutres\scr_load_texutres.gml
+Description convertie /// @description scr_load_texutres()
+
+Conversion du script GML : ${project_dir}\scripts\scr_create_level_model\scr_create_level_model.gml
+Description convertie /// @description scr_create_level_model();
+
+Conversion du script GML : ${project_dir}\scripts\vertex_triangle\vertex_triangle.gml
+Description convertie /// @description vertex_triangle(vbuff,x1,y1,z1,x2,y2,z2,x3,y3,z3,tx1,ty1,tx2,ty2,tx3,ty3)/// @param vbuff
+/// @param x1
+/// @param y1
+/// @param z1
+/// @param x2
+/// @param y2
+/// @param z2
+/// @param x3
+/// @param y3
+/// @param z3
+/// @param tx1
+/// @param ty1
+/// @param tx2
+/// @param ty2
+/// @param tx3
+/// @param ty3
+
+Conversion du script GML : ${project_dir}\scripts\vertex_ellipsoid\vertex_ellipsoid.gml
+Description convertie /// @description vertex_ellipsoid(ind,x1,y1,z1,x2,y2,z2,steps,invert,hrepeat,vrepeat)/// @param ind
+/// @param x1
+/// @param y1
+/// @param z1
+/// @param x2
+/// @param y2
+/// @param z2
+/// @param steps
+/// @param invert
+/// @param hrepeat
+/// @param vrepeat
+
+Conversion du script GML : ${project_dir}\scripts\MatrixToArray2D\MatrixToArray2D.gml
+Description convertie /// @description  MatrixToArray2D( matrix m, int size );/// @param  matrix m
+/// @param  int size
+
+Conversion du script GML : ${project_dir}\scripts\InverseMatrix4\InverseMatrix4.gml
+Description convertie /// @description  InverseMatrix4( matrix m )/// @param  matrix m
+
+Conversion du script GML : ${project_dir}\scripts\Array2DToMatrix\Array2DToMatrix.gml
+Description convertie /// @description  Array2DToMatrix( Array a, int size);/// @param  Array a
+/// @param  int size
+
+Conversion du script GML : ${project_dir}\scripts\scr_create_vertex_format\scr_create_vertex_format.gml
+Description convertie /// @description scr_create_vertex_format();
+
+Conversion du script GML : ${project_dir}\scripts\d3d_vertex_buffer_floor\d3d_vertex_buffer_floor.gml
+Description convertie /// @description d3d_vertex_buffer_floor(ind, x1,y1,z1, x2,y2,z2, hrep,vrep, hoffset,voffset, nscale, colour, alpha);/// @param ind
+/// @param  x1
+/// @param y1
+/// @param z1
+/// @param  x2
+/// @param y2
+/// @param z2
+/// @param  hrep
+/// @param vrep
+/// @param  hoffset
+/// @param voffset
+/// @param  nscale
+/// @param  colour
+/// @param  alpha
+
+Conversion du script GML : ${project_dir}\scripts\d3d_vertex_buffer_wall_vert\d3d_vertex_buffer_wall_vert.gml
+Description convertie /// @description d3d_vertex_buffer_wall_vert(ind, x1,y1,z1, x2,y2,z2, hrep,vrep, hoffset,voffset, nscale);/// @param ind
+/// @param  x1
+/// @param y1
+/// @param z1
+/// @param  x2
+/// @param y2
+/// @param z2
+/// @param  hrep
+/// @param vrep
+/// @param  hoffset
+/// @param voffset
+/// @param  nscale
+
+Conversion du script GML : ${project_dir}\scripts\d3d_vertex_buffer_wall_horz\d3d_vertex_buffer_wall_horz.gml
+Description convertie /// @description d3d_vertex_buffer_wall_horz(ind, x1,y1,z1, x2,y2,z2, hrep,vrep, hoffset,voffset, nscale);/// @param ind
+/// @param  x1
+/// @param y1
+/// @param z1
+/// @param  x2
+/// @param y2
+/// @param z2
+/// @param  hrep
+/// @param vrep
+/// @param  hoffset
+/// @param voffset
+/// @param  nscale
+
+Conversion du script GML : ${project_dir}\scripts\d3d_vertex_buffer_cylinder\d3d_vertex_buffer_cylinder.gml
+Description convertie /// @description d3d_vertex_buffer_cylinder(ind, x1,y1,z1, x2,y2,z2, hrep,vrep,steps,hoffset,voffset, color, alpha);/// @param ind
+/// @param  x1
+/// @param y1
+/// @param z1
+/// @param  x2
+/// @param y2
+/// @param z2
+/// @param  hrep
+/// @param vrep
+/// @param steps
+/// @param hoffset
+/// @param voffset
+/// @param  color
+/// @param  alpha
+
+Conversion du script GML : ${project_dir}\scripts\scr_deferred_init\scr_deferred_init.gml
+Description convertie /// @description scr_deferred_init(width, height);/// @param width
+/// @param  height
+
+Conversion du script GML : ${project_dir}\scripts\scr_deferred_cleanup\scr_deferred_cleanup.gml
+Description convertie /// @description Free surfaces
+
+Conversion du script GML : ${project_dir}\scripts\scr_point_light_buffer_create\scr_point_light_buffer_create.gml
+Description convertie /// @description scr_point_light_buffer_create();
+
+Conversion du script GML : ${project_dir}\scripts\scr_deferred_create_or_update_point_light\scr_deferred_create_or_update_point_light.gml
+Description convertie /// @description scr_deferred_create_or_update_point_light(x,y,z, red,green,blue, range, intensity);/// @param x
+/// @param y
+/// @param z
+/// @param  red
+/// @param green
+/// @param blue
+/// @param  range
+/// @param  intensity
+
+Conversion du script GML : ${project_dir}\scripts\scr_deferred_create_or_update_spot_light\scr_deferred_create_or_update_spot_light.gml
+Description convertie /// @description scr_deferred_create_or_update_spot_light(x,y,z, red,green,blue, range,intensity, _xdir,_ydir,_zdir, _coneSize);/// @param x
+/// @param y
+/// @param z
+/// @param  red
+/// @param green
+/// @param blue
+/// @param  range
+/// @param intensity
+/// @param  _xdir
+/// @param _ydir
+/// @param _zdir
+/// @param  _coneSize
+
+Conversion du script GML : ${project_dir}\scripts\scr_deferred_create_surfaces\scr_deferred_create_surfaces.gml
+Description convertie /// @description scr_deferred_create_surfaces(width, height);/// @param width
+/// @param  height
+
+Conversion du script GML : ${project_dir}\scripts\scr_deferred_get_uniforms\scr_deferred_get_uniforms.gml
+Description convertie /// @description scr_deferred_get_uniforms();
+
+Conversion du script GML : ${project_dir}\scripts\scr_deferred_draw_all_objects\scr_deferred_draw_all_objects.gml
+Description convertie /// @description scr_draw_all_objects()
+
+Conversion du script GML : ${project_dir}\scripts\scr_deferred_draw\scr_deferred_draw.gml
+Description convertie /// @description scr_deferred_draw();
+
+Conversion du script GML : ${project_dir}\scripts\scr_deferred_gbuffer_pass\scr_deferred_gbuffer_pass.gml
+Description convertie /// @description scr_deferred_gbuffer_pass();
+
+Conversion du script GML : ${project_dir}\scripts\scr_deferred_light_accum_pass\scr_deferred_light_accum_pass.gml
+Description convertie /// @description scr_deferred_light_accum_pass();
+
+Conversion du script GML : ${project_dir}\scripts\scr_deferred_final_pass\scr_deferred_final_pass.gml
+Description convertie /// @description scr_deferred_final_pass(ambientRed, ambientGreen, ambientBlue);/// @param ambientRed
+/// @param  ambientGreen
+/// @param  ambientBlue
+
+Conversion du script GML : ${project_dir}\scripts\scr_deferred_check_surfaces\scr_deferred_check_surfaces.gml
+Description convertie /// @description scr_deferred_check_surfaces();
+
+Conversion du script GML : ${project_dir}\scripts\scr_deferred_draw_debug\scr_deferred_draw_debug.gml
+Description convertie /// @description scr_deferred_draw_debug();
+
+Conversion du script GML : ${project_dir}\scripts\scr_deferred_draw_light\scr_deferred_draw_light.gml
+Description convertie /// @description scr_deferred_draw_light();
+
+Conversion du script GML : ${project_dir}\scripts\scr_draw_a_camera\scr_draw_a_camera.gml
+Description convertie /// @description scr_draw_a_camera(xfrom,yfrom,zfrom,xtoo,ytoo,ztoo,xup,yup,zup,fov);/// @param xfrom
+/// @param yfrom
+/// @param zfrom
+/// @param xtoo
+/// @param ytoo
+/// @param ztoo
+/// @param xup
+/// @param yup
+/// @param zup
+/// @param fov
+
+Conversion du script GML : ${project_dir}\scripts\scr_create_cubemap_from_scene\scr_create_cubemap_from_scene.gml
+Description convertie /// @description scr_create_cubemap_from_scene(x,y,z,width,height,range);/// @param x
+/// @param y
+/// @param z
+/// @param width
+/// @param height
+/// @param range
+
+Conversion du script GML : ${project_dir}\objects\obj_controller\Create_0.gml
+Intégré converti - ligne 19 : view_wview[0] -> __view_get( e__VW.WView, 0 )
+Intégré converti - ligne 19 : view_hview[0] -> __view_get( e__VW.HView, 0 )
+
+Conversion du script GML : ${project_dir}\objects\obj_controller\Step_0.gml
+Description convertie /// @description Calc avg FPS
+
+Conversion du script GML : ${project_dir}\objects\obj_controller\Draw_64.gml
+Chaîne convertie - ligne 6 : "Press Spacebar to show\hide debug surfaces" -> "Press Spacebar to show\\hide debug surfaces"
+
+Conversion du script GML : ${project_dir}\objects\obj_camera\Step_0.gml
+Chaîne convertie - ligne 3 : 'W' -> "W"
+Chaîne convertie - ligne 5 : 'S' -> "S"
+Chaîne convertie - ligne 7 : 'D' -> "D"
+Chaîne convertie - ligne 13 : 'A' -> "A"
+
+Ajout du script de compatibilité 'background/background_get_texture.gml'
+Ajout du script de compatibilité 'd3d/d3d_end.gml'
+Ajout du script de compatibilité 'd3d/d3d_model_create.gml'
+Ajout du script de compatibilité 'd3d/d3d_model_destroy.gml'
+Ajout du script de compatibilité 'd3d/d3d_model_draw.gml'
+Ajout du script de compatibilité 'd3d/d3d_model_load.gml'
+Ajout du script de compatibilité 'd3d/d3d_model_primitive_begin.gml'
+Ajout du script de compatibilité 'd3d/d3d_model_primitive_end.gml'
+Ajout du script de compatibilité 'd3d/d3d_model_vertex.gml'
+Ajout du script de compatibilité 'd3d/d3d_model_vertex_color.gml'
+Ajout du script de compatibilité 'd3d/d3d_model_vertex_normal.gml'
+Ajout du script de compatibilité 'd3d/d3d_model_vertex_normal_color.gml'
+Ajout du script de compatibilité 'd3d/d3d_model_vertex_normal_texture.gml'
+Ajout du script de compatibilité 'd3d/d3d_model_vertex_normal_texture_color.gml'
+Ajout du script de compatibilité 'd3d/d3d_model_vertex_texture.gml'
+Ajout du script de compatibilité 'd3d/d3d_model_vertex_texture_color.gml'
+Ajout du script de compatibilité 'd3d/d3d_model_wall.gml'
+Ajout du script de compatibilité 'd3d/d3d_set_culling.gml'
+Ajout du script de compatibilité 'd3d/d3d_set_hidden.gml'
+Ajout du script de compatibilité 'd3d/d3d_set_projection_ext.gml'
+Ajout du script de compatibilité 'd3d/d3d_start.gml'
+Ajout du script de compatibilité 'd3d/d3d_transform_add_translation.gml'
+Ajout du script de compatibilité 'd3d/d3d_transform_set_identity.gml'
+Ajout du script de compatibilité 'd3d/__d3d_model_add_vertex.gml'
+Ajout du script de compatibilité 'draw/draw_enable_alphablend.gml'
+Ajout du script de compatibilité 'draw/draw_set_blend_mode.gml'
+Ajout du script de compatibilité 'instance/instance_create.gml'
+Ajout du script de compatibilité 'object/object_get_depth.gml'
+Ajout du script de compatibilité 'texture/texture_set_interpolation_ext.gml'
+Ajout du script de compatibilité 'texture/texture_set_repeat.gml'
+Ajout du script de compatibilité 'texture/texture_set_repeat_ext.gml'
+Ajout du script de compatibilité 'view/__view_get.gml'
+Ajout du script de compatibilité 'background/__init_background.gml'
+Ajout du script de compatibilité 'd3d/__init_d3d.gml'
+Ajout du script de compatibilité 'view/__init_view.gml'
+Ajout du script de compatibilité '__init_global.gml'
+Ajout du script de compatibilité 'd3d/d3d_model_block.gml'
+Ajout du script de compatibilité 'd3d/d3d_model_clear.gml'
+Ajout du script de compatibilité 'd3d/d3d_model_cone.gml'
+Ajout du script de compatibilité 'd3d/d3d_model_cylinder.gml'
+Ajout du script de compatibilité 'd3d/d3d_model_ellipsoid.gml'
+Ajout du script de compatibilité 'd3d/d3d_model_floor.gml'
+Ajout du script de compatibilité '__global_object_depths.gml'

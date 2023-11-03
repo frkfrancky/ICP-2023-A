@@ -1,0 +1,11 @@
+image_speed = 0;
+image_index = 0;
+depth = -200;
+/*mini_id = -1;
+mini_log = s_equipe;
+left_spr = 0;
+top_spr = 0;
+room_id = -1;*/
+soratra = "Back";
+is_focus = true;
+//mpamorona = 0;

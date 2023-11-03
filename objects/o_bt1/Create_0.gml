@@ -1,0 +1,11 @@
+image_speed = 0;
+image_index = 0;
+image_alpha = 0;
+depth = -10;
+mini_id = -1;
+anarana = "VIDE";
+icon = 0;
+is_focus = false;
+is_select = false;
+data = 0;
+mpamorona = 0;
