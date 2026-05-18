@@ -8,11 +8,11 @@ le_viewport_x    = le_panel_left_w;
 le_viewport_w    = 1280 - le_panel_left_w - le_panel_right_w;
 le_viewport_h    = 720;
 
-// Level selector (bottom-left panel)
-le_available_levels = scan_level_files();
-le_current_level_idx = -1;
-le_level_selector_open = true;
-le_selector_scroll = 0;
+// Load level from selector if provided
+if (variable_global_exists("level_to_load") && global.level_to_load != "") {
+    le_objects = level_loader(global.level_to_load);
+    global.level_to_load = "";
+}
 
 // Surface 3D
 le_surf = -1;
@@ -79,14 +79,6 @@ le_lit_amb   = 0.4;
 le_lit_rim   = 0.3;
 le_update_lighting();
 
-// Fonction pour charger un niveau depuis JSON
-le_load_level_from_file = function(_filename) {
-    var _loaded = level_loader(_filename);
-    if (array_length(_loaded) > 0) {
-        le_objects = _loaded;
-        show_message("Niveau chargé: " + _filename + "\n" + string(array_length(le_objects)) + " objets");
-    }
-};
 
 // Objets de la scène  {type, vb, x,y,z, rx,ry,rz, sx,sy,sz, name, col, intensity (lumières)}
 le_objects   = [];

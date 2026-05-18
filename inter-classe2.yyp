@@ -186,6 +186,7 @@
     {"id":{"name":"spawn_level_objects","path":"scripts/spawn_level_objects/spawn_level_objects.yy",},"order":5,},
     {"id":{"name":"create_cube_vb","path":"scripts/create_cube_vb/create_cube_vb.yy",},"order":6,},
     {"id":{"name":"scan_level_files","path":"scripts/scan_level_files/scan_level_files.yy",},"order":7,},
+    {"id":{"name":"o_level_select","path":"objects/o_level_select/o_level_select.yy",},"order":8,},
     {"id":{"name":"o_cc","path":"objects/o_cc/o_cc.yy",},"order":0,},
     {"id":{"name":"o_p","path":"objects/o_p/o_p.yy",},"order":1,},
     {"id":{"name":"o_c_editor","path":"objects/o_c_editor/o_c_editor.yy",},"order":0,},
@@ -208,6 +209,7 @@
     {"id":{"name":"r_terrain","path":"rooms/r_terrain/r_terrain.yy",},"order":6,},
     {"id":{"name":"r_outils","path":"rooms/r_outils/r_outils.yy",},"order":11,},
     {"id":{"name":"r_level_editor","path":"rooms/r_level_editor/r_level_editor.yy",},"order":12,},
+    {"id":{"name":"r_level_select","path":"rooms/r_level_select/r_level_select.yy",},"order":13,},
     {"id":{"name":"o_level_editor","path":"objects/o_level_editor/o_level_editor.yy",},"order":12,},
     {"id":{"name":"compatibility_report_240522_1152275227","path":"notes/compatibility_report_240522_1152275227/compatibility_report_240522_1152275227.yy",},"order":1,},
     {"id":{"name":"Deferred_Cubemap_Shadows","path":"extensions/Deferred_Cubemap_Shadows/Deferred_Cubemap_Shadows.yy",},"order":1,},
@@ -254,6 +256,7 @@
     {"roomId":{"name":"r_editor","path":"rooms/r_editor/r_editor.yy",},},
     {"roomId":{"name":"r_outils","path":"rooms/r_outils/r_outils.yy",},},
     {"roomId":{"name":"r_level_editor","path":"rooms/r_level_editor/r_level_editor.yy",},},
+    {"roomId":{"name":"r_level_select","path":"rooms/r_level_select/r_level_select.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":1,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},
