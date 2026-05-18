@@ -1,3 +1,8 @@
+// Skip rendering in match room - o_match_camera handles it
+if (instance_exists(o_match_camera)) {
+	exit;
+}
+
 var camera= camera_get_active();
 /*
 if(o_target.camera_libre == false){
