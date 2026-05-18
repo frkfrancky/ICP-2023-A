@@ -39,3 +39,21 @@ if((device_mouse_check_button_released(0,mb_left)) || (device_mouse_check_button
 	button_action1 = false;
 	button_action2 = false;
 }
+
+// Proxy o_match_camera lighting and shader variables for match gameplay
+if (instance_exists(o_match_camera)) {
+	lit_dir = o_match_camera.lit_dir;
+	lit_color = o_match_camera.lit_color;
+	lit_amb = o_match_camera.lit_amb;
+	lit_rim = o_match_camera.lit_rim;
+	u_ldir = o_match_camera.u_ldir;
+	u_lcol = o_match_camera.u_lcol;
+	u_lamb = o_match_camera.u_lamb;
+	u_lrim = o_match_camera.u_lrim;
+	u_pl0 = o_match_camera.u_pl0;
+	u_pl1 = o_match_camera.u_pl1;
+	u_plcol = o_match_camera.u_plcol;
+	u_plrad = o_match_camera.u_plrad;
+	u_sprpos = o_match_camera.u_sprpos;
+	u_flat_normal = o_match_camera.u_flat_normal;
+}
