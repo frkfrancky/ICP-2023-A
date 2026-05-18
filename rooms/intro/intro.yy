@@ -14,6 +14,7 @@
   ],
   "layers": [
     {"instances":[
+        {"properties":[],"isDnd":false,"objectId":{"name":"o_global_shortcuts","path":"objects/o_global_shortcuts/o_global_shortcuts.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":0.0,"y":0.0,"resourceVersion":"1.0","name":"inst_global_shortcuts","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"o_intro","path":"objects/o_intro/o_intro.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":976.0,"y":32.0,"resourceVersion":"1.0","name":"inst_6579B573","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"o_anim_editor","path":"objects/o_anim_editor/o_anim_editor.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":64.0,"y":288.0,"resourceVersion":"1.0","name":"inst_5670532D","tags":[],"resourceType":"GMRInstance",},
       ],"visible":true,"depth":0,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"Instances_3","tags":[],"resourceType":"GMRInstanceLayer",},
@@ -27,6 +28,7 @@
   "creationCodeFile": "",
   "inheritCode": false,
   "instanceCreationOrder": [
+    {"name":"inst_global_shortcuts","path":"rooms/intro/intro.yy",},
     {"name":"inst_E89230C_1","path":"rooms/intro/intro.yy",},
     {"name":"inst_6579B573","path":"rooms/intro/intro.yy",},
     {"name":"inst_5670532D","path":"rooms/intro/intro.yy",},

@@ -187,6 +187,7 @@
     {"id":{"name":"create_cube_vb","path":"scripts/create_cube_vb/create_cube_vb.yy",},"order":6,},
     {"id":{"name":"scan_level_files","path":"scripts/scan_level_files/scan_level_files.yy",},"order":7,},
     {"id":{"name":"o_level_select","path":"objects/o_level_select/o_level_select.yy",},"order":8,},
+    {"id":{"name":"o_global_shortcuts","path":"objects/o_global_shortcuts/o_global_shortcuts.yy",},"order":9,},
     {"id":{"name":"o_cc","path":"objects/o_cc/o_cc.yy",},"order":0,},
     {"id":{"name":"o_p","path":"objects/o_p/o_p.yy",},"order":1,},
     {"id":{"name":"o_c_editor","path":"objects/o_c_editor/o_c_editor.yy",},"order":0,},
