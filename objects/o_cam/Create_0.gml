@@ -50,11 +50,12 @@ day_update_light = function() {
         var _elev = sin(degtorad(_sun_ang));     // hauteur 0→1→0
         var _azm  = cos(degtorad(_sun_ang));     // horizontal -1→0→1
         lit_dir   = [_azm * 0.5, 0.6, _elev * 0.8];
-        // Couleur : orange lever/coucher, blanc midi
+        // Couleur : orange lever/coucher, blanc midi (1.5x plus lumineux)
         var _mid  = 1.0 - abs(_t_day - 0.5) * 2.0;  // 1 au milieu
-        lit_color = [lerp(1.0, 0.92, _mid), lerp(0.55, 0.88, _mid), lerp(0.25, 0.78, _mid)];
-        lit_amb   = lerp(0.12, 0.36, _mid);
-        lit_rim   = lerp(0.30, 0.55, _mid);
+        var _warm = abs(_t_day - 0.5) * 2;
+        lit_color = [1.5, 1.5*(1.0-_warm*0.35), 1.5*(1.0-_warm*0.6)];
+        lit_amb   = lerp(0.15, 0.45, _mid);
+        lit_rim   = lerp(0.35, 0.65, _mid);
     } else {
         // Nuit : lumière douce bleue (lune)
         lit_dir   = [0.0, 0.5, 0.8];
@@ -87,5 +88,43 @@ u_fldir = shader_get_uniform(shd_floor, "u_lightDir");
 u_flcol = shader_get_uniform(shd_floor, "u_lightColor");
 u_flamb = shader_get_uniform(shd_floor, "u_ambient");
 
+// Shadow mapping
+shadow_enable = true;
+shadow_surf = -1;
+shadow_sz = 1024;
+shadow_darkness = 0.3;
+shadow_bias = 0.005;
+
+// Shadow geometry uniforms (from light's perspective)
+lit_pos = [0, 0, 1500];
+lit_right = [1, 0, 0];
+lit_up = [0, 0, 1];
+lit_fwd = [0, 0, -1];
+lit_hw = 800;
+lit_hh = 600;
+lit_far = 2000;
+
+// Get shadow shader uniforms if available
+u_shadow_en = shader_get_uniform(Shader1, "u_shadowEnable");
+u_shadow_dark = shader_get_uniform(Shader1, "u_shadowDark");
+u_shadow_bias = shader_get_uniform(Shader1, "u_shadowBias");
+u_shadow_recv = shader_get_uniform(Shader1, "u_shadowRecv");
+u_shadow_samp = shader_get_sampler_index(Shader1, "u_shadowMap");
+u_litPos = shader_get_uniform(Shader1, "u_litPos");
+u_litRight = shader_get_uniform(Shader1, "u_litRight");
+u_litUp = shader_get_uniform(Shader1, "u_litUp");
+u_litFwd = shader_get_uniform(Shader1, "u_litFwd");
+u_litHW = shader_get_uniform(Shader1, "u_litHW");
+u_litHH = shader_get_uniform(Shader1, "u_litHH");
+u_litFar = shader_get_uniform(Shader1, "u_litFar");
+
+// Shadow shader
+u_sh_litPos = shader_get_uniform(shd_shadow, "u_litPos");
+u_sh_litRight = shader_get_uniform(shd_shadow, "u_litRight");
+u_sh_litUp = shader_get_uniform(shd_shadow, "u_litUp");
+u_sh_litFwd = shader_get_uniform(shd_shadow, "u_litFwd");
+u_sh_litHW = shader_get_uniform(shd_shadow, "u_litHW");
+u_sh_litHH = shader_get_uniform(shd_shadow, "u_litHH");
+u_sh_litFar = shader_get_uniform(shd_shadow, "u_litFar");
 
 

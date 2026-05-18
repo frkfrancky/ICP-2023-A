@@ -31,6 +31,64 @@ gpu_set_alphatestenable(true);
 gpu_set_texrepeat(true);
 
 // ═══════════════════════════════════════════════════════
+// SHADOW MAP PASS (si activé)
+// ═══════════════════════════════════════════════════════
+if (shadow_enable && instance_exists(o_match_setup) && array_length(o_match_setup.level_objects) > 0) {
+    if (!surface_exists(shadow_surf))
+        shadow_surf = surface_create(shadow_sz, shadow_sz);
+
+    var _objs = o_match_setup.level_objects;
+    var _ld = lit_dir;  // direction vers le soleil
+    var _sd = 1500;
+    lit_pos = [_ld[0]*_sd, _ld[1]*_sd, _ld[2]*_sd];
+
+    // Calculer base orthonormée
+    var _fx = -_ld[0]; var _fy = -_ld[1]; var _fz = -_ld[2];
+    var _wux = 0.0; var _wuy = 0.0; var _wuz = 1.0;
+    if (abs(_ld[2]) > 0.85) { _wux = 1.0; _wuz = 0.0; }
+
+    var _rx = _wuy*_fz - _wuz*_fy;
+    var _ry = _wuz*_fx - _wux*_fz;
+    var _rz = _wux*_fy - _wuy*_fx;
+    var _rlen = sqrt(_rx*_rx + _ry*_ry + _rz*_rz);
+    _rx /= _rlen; _ry /= _rlen; _rz /= _rlen;
+
+    var _ux = _fy*_rz - _fz*_ry;
+    var _uy = _fz*_rx - _fx*_rz;
+    var _uz = _fx*_ry - _fy*_rx;
+
+    lit_right = [_rx, _ry, _rz];
+    lit_up = [_ux, _uy, _uz];
+    lit_fwd = [_fx, _fy, _fz];
+
+    surface_set_target(shadow_surf);
+    draw_clear(c_white);
+    gpu_set_zwriteenable(true);
+    gpu_set_cullmode(cull_noculling);
+
+    shader_set(shd_shadow);
+    shader_set_uniform_f_array(u_sh_litPos, lit_pos);
+    shader_set_uniform_f_array(u_sh_litRight, lit_right);
+    shader_set_uniform_f_array(u_sh_litUp, lit_up);
+    shader_set_uniform_f_array(u_sh_litFwd, lit_fwd);
+    shader_set_uniform_f(u_sh_litHW, lit_hw);
+    shader_set_uniform_f(u_sh_litHH, lit_hh);
+    shader_set_uniform_f(u_sh_litFar, lit_far);
+
+    for (var _si = 0; _si < array_length(_objs); _si++) {
+        var _so = _objs[_si];
+        if (_so.type != "mesh" || _so.vb < 0) continue;
+        matrix_set(matrix_world, matrix_build(_so.x,_so.y,_so.z, _so.rx,_so.ry,_so.rz, _so.sx,_so.sy,_so.sz));
+        vertex_submit(_so.vb, pr_trianglelist, -1);
+    }
+
+    matrix_set(matrix_world, matrix_build_identity());
+    shader_reset();
+    gpu_set_zwriteenable(false);
+    surface_reset_target();
+}
+
+// ═══════════════════════════════════════════════════════
 // Niveau chargé depuis o_match_setup
 // ═══════════════════════════════════════════════════════
 
@@ -62,6 +120,20 @@ if (instance_exists(o_match_setup) && array_length(o_match_setup.level_objects) 
     shader_set_uniform_f_array(u_pl1, _pls_pos[1]);
     shader_set_uniform_f_array(u_sprpos, [0,0,0]);
     shader_set_uniform_f(u_flat_normal, 0.0);
+    // Shadow uniforms
+    shader_set_uniform_f(u_shadow_en, shadow_enable ? 1.0 : 0.0);
+    shader_set_uniform_f(u_shadow_dark, shadow_darkness);
+    shader_set_uniform_f(u_shadow_bias, shadow_bias);
+    shader_set_uniform_f(u_shadow_recv, 1.0);
+    shader_set_uniform_f_array(u_litPos, lit_pos);
+    shader_set_uniform_f_array(u_litRight, lit_right);
+    shader_set_uniform_f_array(u_litUp, lit_up);
+    shader_set_uniform_f_array(u_litFwd, lit_fwd);
+    shader_set_uniform_f(u_litHW, lit_hw);
+    shader_set_uniform_f(u_litHH, lit_hh);
+    shader_set_uniform_f(u_litFar, lit_far);
+    if (shadow_enable && surface_exists(shadow_surf))
+        texture_set_stage(u_shadow_samp, surface_get_texture(shadow_surf));
 
     for (var _oi = 0; _oi < array_length(_objs); _oi++) {
         var _o = _objs[_oi];
