@@ -1,3 +1,4 @@
+global.playerNumber = 1;
 
 global.time = 1;
 
@@ -79,6 +80,33 @@ but2.aniza = 2;
 //score:
 global.but_eq1 = 0;
 global.but_eq2 = 0;
+
+//difficulte IA (1=facile, 2=normal, 3=difficile)
+global.difficulty = 3;
+
+// Animation récupération après panier
+basket_anim      = false;
+basket_phase     = 0;   // 0=marche vers balle, 1=marche vers inbound, 2=attend passe
+basket_timer     = 0;
+basket_player    = -1;  // joueur qui ramasse et remet en jeu
+basket_support   = -1;  // 2e joueur qui se positionne pour recevoir
+basket_side      = 0;   // equipe qui remet en jeu (1 ou 2)
+basket_inbound_x = 0;
+basket_inbound_y = 0;
+basket_cooldown  = 0;   // délai après inbound avant rush offensif
+
+ball_chaser_eq1 = -1;  // bot eq1 qui chasse le ballon libre
+ball_chaser_eq2 = -1;  // bot eq2 qui chasse le ballon libre
+
+// Hors-terrain (out of bounds)
+oob_anim       = false;
+oob_timer      = 0;
+oob_inbound_x  = 0;
+oob_inbound_y  = 0;
+oob_side       = 0;       // équipe qui remet en jeu
+oob_fade       = 0.0;     // alpha du fondu noir (0=transparent, 1=opaque)
+oob_fade_state = 0;       // 0=rien, 1=fondu vers noir, 2=maintien, 3=retour
+
 
 //tactic
 tac1 = get_tactic_by_type("1");

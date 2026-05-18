@@ -5,14 +5,28 @@ if(room == r_menu3){
 if(anim_start == true){
 	if(room == r_menu1){
 		for (var i = 0; i < 6; ++i) {
-		    bt[i].y =  y+0+(i*96);
+		    //bt[i].y =  y+0+(i*96);
+			bt[i].y =  y+0+(i*global.e_bt);
 			bt[i].image_alpha = image_alpha;
 		}
 		glisser_fondu(48);
 		
 	}else if (room == r_menu2){
 		for (var i = 0; i < 3; ++i) {
-		    bt[i].y =  y+0+(i*96);
+		    //bt[i].y =  y+0+(i*96);
+			bt[i].y =  y+0+(i*global.e_bt);
+			bt[i].image_alpha = image_alpha;
+		}
+		glisser_fondu(32);
+	}else if (room == r_menu5){
+		for (var i = 0; i < 2; ++i) {
+			bt[i].y =  y+0+(i*global.e_bt);
+			bt[i].image_alpha = image_alpha;
+		}
+		glisser_fondu(32);
+	}else if (room == r_outils){
+		for (var i = 0; i < 3; ++i) {
+			bt[i].y =  y+0+(i*global.e_bt);
 			bt[i].image_alpha = image_alpha;
 		}
 		glisser_fondu(32);
@@ -29,7 +43,8 @@ if(anim_start == true){
 if(room != r_menu3){
 	if(is_array(bt)){
 		for (var i = 0; i < array_length_1d(bt); ++i) {
-		    bt[i].y = bt[0].y+(i*96);
+		    //bt[i].y = bt[0].y+(i*96);
+			bt[i].y = bt[0].y+(i*global.e_bt);
 		}
 	}
 }else{
@@ -60,11 +75,12 @@ if(array_length_1d(bt) > 5 && is_focus){
 	
 	if(room != r_menu3){		
 		if((bt[array_length_1d(bt)-1].y - y)  < 48){
-			bt[0].y = y+48+(-96*(array_length_1d(bt)-1));
+			//bt[0].y = y+48+(-(96)*(array_length_1d(bt)-1));
+			bt[0].y = y+48+(-(global.e_bt)*(array_length_1d(bt)-1));
 		}
 	}else{
 		if((bt[array_length_1d(bt)-1].y - y)  < 48){
-			bt[0].y = y+48+(-72*(array_length_1d(bt)-1));
+			bt[0].y = y+48+(-(72)*(array_length_1d(bt)-1));
 		}
 	}
 }
@@ -80,7 +96,8 @@ if(array_length_1d(bt) > 5 && is_focus){
 				index_focused = array_length_1d(bt)-1;
 				//bt[0].y = y+16+(-96*(index_focused+1));
 			}else if(bt[index_focused].is_focus && bt[index_focused-1].y<y && index_focused != 0){
-				bt[0].y = y+16+(-96*(index_focused-1));
+				//bt[0].y = y+16+(-96*(index_focused-1));
+				bt[0].y = y+16+(-global.e_bt*(index_focused-1));
 				bt[index_focused].is_focus = false;
 				index_focused -= 1;
 			}else{
@@ -132,7 +149,8 @@ if(array_length_1d(bt) > 5 && is_focus){
 				bt[index_focused].is_focus = false;
 				index_focused = 0;
 			}else if(bt[index_focused].is_focus && bt[index_focused+1].visible==false){
-				bt[0].y = y+16+(-96*(index_focused+1));//TEST DE LA DERNIERE ELEMENT DU TABLEAU
+				//bt[0].y = y+16+(-96*(index_focused+1));//TEST DE LA DERNIERE ELEMENT DU TABLEAU
+				bt[0].y = y+16+(-global.e_bt*(index_focused+1));//TEST DE LA DERNIERE ELEMENT DU TABLEAU
 				bt[index_focused].is_focus = false;
 				index_focused += 1;
 			}else{
@@ -179,7 +197,13 @@ if(array_length_1d(bt) > 5 && is_focus){
 	
 	
 	if(touche_back_menu() && is_focus && index_focused<(array_length_1d(bt))){
+		if(room == r_menu5){
+			room_goto(r_menu4);
+		}
 		if(room == r_menu2){
+			room_goto(r_menu1);
+		}
+		if(room == r_outils){
 			room_goto(r_menu1);
 		}
 		if(room == r_menu3){
@@ -288,6 +312,9 @@ for (var i = 0; i < array_length_1d(bt); ++i) {
 			if(bt[i].mini_id==4){
 				room_goto(test);
 			}
+			if(bt[i].mini_id==5){
+				room_goto(r_outils);
+			}
 		}
 		if(room == r_menu2){
 			if(bt[i].mini_id==0){
@@ -299,6 +326,25 @@ for (var i = 0; i < array_length_1d(bt); ++i) {
 				room_goto(r_menu3);				
 			}
 			if(bt[i].mini_id==2){
+				room_goto(r_menu1);
+			}
+		}
+		if(room == r_menu5){
+			if(bt[i].mini_id == 0){
+				room_goto(test);
+			}
+			if(bt[i].mini_id == 1){
+				room_goto(r_menu4);
+			}
+		}
+		if(room == r_outils){
+			if(bt[i].mini_id == 0){
+				room_goto(r_editor);
+			}
+			if(bt[i].mini_id == 1){
+				room_goto(r_level_editor);
+			}
+			if(bt[i].mini_id == 2){
 				room_goto(r_menu1);
 			}
 		}

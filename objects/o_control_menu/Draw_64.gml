@@ -1,4 +1,4 @@
-if(room != intro && room != video){
+if(room != intro && room != video && room != r_editor && room != r_level_editor){
 	draw_set_color(c_white);
 	draw_set_alpha(1);
 	if (room == r_menu3){
@@ -19,8 +19,9 @@ if(room != intro && room != video){
 	
 	
 	///TEXT SLIDING
-	draw_set_alpha(0.7);
-	draw_rectangle_color(0,room_height-70,room_width,room_height-10,c_black,c_black,c_black,c_black,false);
+	draw_set_alpha(1);
+	rec_color = #333333;
+	draw_rectangle_color(0,room_height-70,room_width,room_height-10,rec_color,rec_color,rec_color,rec_color,false);
 	//draw_rectangle_color(x_sliding,room_height-60,x_sliding+string_width(text_sliding),room_height-20,c_red,c_red,c_red,c_red,false);
 	draw_set_alpha(1);
 	
@@ -49,10 +50,14 @@ if(room != intro && room != video){
 		}
 		
 
-		draw_set_alpha(0.2);
-		draw_rectangle_color(x_sliding[i],room_height-60,x_sliding[i]+string_width(text_sliding[i])+50,room_height-20,slide_color,slide_color,slide_color,slide_color,false);
 		draw_set_alpha(1);
+		draw_rectangle_color(x_sliding[i],room_height-60-10,x_sliding[i]+string_width(text_sliding[i])+50,room_height-20+10,global.colorS1 ,global.colorS1 ,global.colorS1 ,global.colorS1 ,false);
+		draw_set_alpha(1);
+		
+		//draw_set_color(c_white);
+		//draw_set_font(music_titre);
 		draw_text_transformed(x_sliding[i]+25,room_height-20,text_sliding[i],1,1,0);
+		//draw_text_transformed_color(x_sliding[i]+25,room_height-20,text_sliding[i],1,1,0,slide_color,slide_color,slide_color,slide_color,1)
 	}
 	
 
@@ -70,3 +75,6 @@ if(room != intro && room != video){
 	draw_set_font(my_font_big);
 	draw_text_transformed(20,20,string(room_get_name(room))+"; fps="+string(fps),0.5,0.5,1);
 }
+
+
+

@@ -36,6 +36,12 @@ if(room == r_menu1 || room == r_menu2){
 	//mess.image_alpha = alpha;
 
 	initialisation_menu4();
+}else if(room == r_menu5){
+	can_press = true;
+	mn[0] = instance_create_depth(48+refmenu_x, 132+refmenu_y, -5, o_sous_menu);
+}else if(room == r_outils){
+	can_press = true;
+	mn[0] = instance_create_depth(48+refmenu_x, 132+refmenu_y, -5, o_sous_menu);
 }else if(room == titre){
 	music = instance_create_depth(room_width, room_height, -10,o_control_music);
 }

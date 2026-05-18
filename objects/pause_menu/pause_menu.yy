@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "s_back3",
-    "path": "sprites/s_back3/s_back3.yy",
+    "name": "s_back_alpha",
+    "path": "sprites/s_back_alpha/s_back_alpha.yy",
   },
   "solid": false,
   "visible": true,
@@ -30,8 +30,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "test2",
-    "path": "folders/Objets/test2.yy",
+    "name": "Match_main",
+    "path": "folders/Objets/Match_main.yy",
   },
   "resourceVersion": "1.0",
   "name": "pause_menu",

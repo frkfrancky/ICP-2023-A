@@ -1,7 +1,15 @@
 //if(global.playerNumber == 1){
 	//show_message(string(index_selected));
 	if(index_focused == 0){
-		//READY
+		// READY
+		is_ready = true;
+		if(global.playerNumber == 1){
+			room_goto(r_menu5);
+		}else if(global.playerNumber == 2){
+			if(o_control_menu.mn[0].is_ready == true && o_control_menu.mn[1].is_ready == true){
+				room_goto(r_menu5);
+			}
+		}
 	}else{
 		if(index_selected != index_focused){
 			if(index_selected  > 0) {//efa nisy niselectionena

@@ -2,6 +2,7 @@ anim_start = false;
 is_focus = false;
 index_focused = 0;
 mini_id = -1;
+is_ready = false;
 jou = 0;
 bt = 0;
 index_selected = -1;

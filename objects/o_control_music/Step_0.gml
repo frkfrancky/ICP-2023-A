@@ -1,3 +1,4 @@
+//audio_stop_all()
 if(audio_is_playing(mosika)==false){
 	var hasard = int64(random_range(0,get_count_music()));
 	var mozika_rehetra = get_all_music();

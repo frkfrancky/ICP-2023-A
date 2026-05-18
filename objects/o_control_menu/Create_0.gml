@@ -30,7 +30,7 @@ if(os_type == os_windows){
 	v_sliding = 2;
 	nbr_text = 3;
 	slide_space = 150;
-	slide_color = #00ff88;
+	slide_color = #333333;
 
 	text_sliding[0] = "Version Pre-Alpha du jeu, votre machine est: "+my_os+", version: "+string(os_version);
 	text_sliding[1] = "Publicité numero 0000, test deuxieme texte de l'affichage 22222";

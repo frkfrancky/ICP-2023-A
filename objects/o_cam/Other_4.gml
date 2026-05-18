@@ -5,3 +5,6 @@ vertex_format_add_texcoord();
 vertex_format_add_color();
 
 global.vFormat = vertex_format_end();
+
+
+
