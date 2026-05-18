@@ -1,5 +1,5 @@
 // Skip rendering in match room - o_match_camera handles it
-if (instance_exists(o_match_camera)) {
+if (room == r_match_game) {
 	exit;
 }
 
