@@ -107,6 +107,9 @@ u_shadow_bias = shader_get_uniform(Shader1, "u_shadowBias");
 u_shadow_recv = shader_get_uniform(Shader1, "u_shadowRecv");
 
 // Caméra
+fov_y = 35;
+z_target = 16;
+zt_p = 16;
 cam_view_mat = matrix_get(matrix_view);
 cam_proj_mat = matrix_get(matrix_projection);
 cam_surf_w = 1280;

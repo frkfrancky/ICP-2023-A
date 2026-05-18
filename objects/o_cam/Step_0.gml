@@ -42,14 +42,34 @@ if((device_mouse_check_button_released(0,mb_left)) || (device_mouse_check_button
 
 // Proxy o_match_camera lighting and shader variables for match gameplay
 if (instance_exists(o_match_camera)) {
+	// Lighting
 	lit_dir = o_match_camera.lit_dir;
 	lit_color = o_match_camera.lit_color;
 	lit_amb = o_match_camera.lit_amb;
 	lit_rim = o_match_camera.lit_rim;
+	day_hour = o_match_camera.day_hour;
+
+	// Camera
+	fov_y = o_match_camera.fov_y;
+	z_target = o_match_camera.z_target;
+	zt_p = o_match_camera.zt_p;
+
+	// Shadow
+	lit_pos = o_match_camera.lit_pos;
+	lit_right = o_match_camera.lit_right;
+	lit_up = o_match_camera.lit_up;
+	lit_fwd = o_match_camera.lit_fwd;
+	lit_hw = o_match_camera.lit_hw;
+	lit_hh = o_match_camera.lit_hh;
+	lit_far = o_match_camera.lit_far;
+
+	// Shader uniforms - directional lights
 	u_ldir = o_match_camera.u_ldir;
 	u_lcol = o_match_camera.u_lcol;
 	u_lamb = o_match_camera.u_lamb;
 	u_lrim = o_match_camera.u_lrim;
+
+	// Shader uniforms - point lights
 	u_pl0 = o_match_camera.u_pl0;
 	u_pl1 = o_match_camera.u_pl1;
 	u_pl0col = o_match_camera.u_pl0col;
@@ -59,6 +79,13 @@ if (instance_exists(o_match_camera)) {
 	u_pl2rad = o_match_camera.u_pl2rad;
 	u_plcol = o_match_camera.u_plcol;
 	u_plrad = o_match_camera.u_plrad;
+
+	// Shader uniforms - sprite/mesh
 	u_sprpos = o_match_camera.u_sprpos;
 	u_flat_normal = o_match_camera.u_flat_normal;
+
+	// Floor shader uniforms
+	u_fldir = o_match_camera.u_fldir;
+	u_flcol = o_match_camera.u_flcol;
+	u_flamb = o_match_camera.u_flamb;
 }
