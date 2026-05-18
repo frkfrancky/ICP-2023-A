@@ -342,7 +342,7 @@ for (var i = 0; i < array_length_1d(bt); ++i) {
 				room_goto(r_editor);
 			}
 			if(bt[i].mini_id == 1){
-				room_goto(r_level_editor);
+				room_goto(r_level_select);
 			}
 			if(bt[i].mini_id == 2){
 				room_goto(r_menu1);

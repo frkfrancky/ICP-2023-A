@@ -31,12 +31,13 @@ function create_cube_vb(_hw) {
         var _nx = _cn[_fi][0];
         var _ny = _cn[_fi][1];
         var _nz = _cn[_fi][2];
+        var _col = make_color_rgb(round((_nz*0.5+0.5)*255), 128, 128);
 
         for (var _vi = 0; _vi < 6; _vi++) {
             var _idx = _cf[_fi][_vi];
             vertex_position_3d(_vb, _cv[_idx][0], _cv[_idx][1], _cv[_idx][2]);
             vertex_texcoord(_vb, _nx*0.5+0.5, _ny*0.5+0.5);
-            vertex_color(_vb, c_white, 1.0);  // Use white - let shader handle color
+            vertex_color(_vb, _col, 1.0);
         }
     }
 

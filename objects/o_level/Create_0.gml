@@ -8,9 +8,23 @@ le_viewport_x    = le_panel_left_w;
 le_viewport_w    = 1280 - le_panel_left_w - le_panel_right_w;
 le_viewport_h    = 720;
 
+// Shader uniforms - créer d'abord pour level_loader
+if (!variable_global_exists("vFormat")) {
+    vertex_format_begin();
+    vertex_format_add_position_3d();
+    vertex_format_add_texcoord();
+    vertex_format_add_color();
+    global.vFormat = vertex_format_end();
+}
+
+// Objets de la scène  {type, vb, x,y,z, rx,ry,rz, sx,sy,sz, name, col, intensity (lumières)}
+le_objects   = [];
+le_level_loaded = false;
+
 // Load level from selector if provided
 if (variable_global_exists("level_to_load") && global.level_to_load != "") {
     le_objects = level_loader(global.level_to_load);
+    le_level_loaded = true;
     global.level_to_load = "";
 }
 
@@ -79,9 +93,6 @@ le_lit_amb   = 0.4;
 le_lit_rim   = 0.3;
 le_update_lighting();
 
-
-// Objets de la scène  {type, vb, x,y,z, rx,ry,rz, sx,sy,sz, name, col, intensity (lumières)}
-le_objects   = [];
 le_sel_obj   = -1;
 le_hover_obj = -1;
 le_obj_scroll = 0;          // scroll liste objets panneau gauche
@@ -98,13 +109,6 @@ le_modal_open = false;
 le_modal_cat  = 0;    // catégorie hover dans modal
 
 // Shader uniforms
-if (!variable_global_exists("vFormat")) {
-    vertex_format_begin();
-    vertex_format_add_position_3d();
-    vertex_format_add_texcoord();
-    vertex_format_add_color();
-    global.vFormat = vertex_format_end();
-}
 le_u_ldir        = shader_get_uniform(Shader1, "u_lightDir");
 le_u_lcol        = shader_get_uniform(Shader1, "u_lightColor");
 le_u_lamb        = shader_get_uniform(Shader1, "u_ambient");
@@ -466,9 +470,11 @@ le_make_capsule_vb = function() {
     return _vb;
 };
 
-// Terrain de match par défaut (su_ter1 texture, shd_floor)
-array_push(le_objects, {type:"terrain", vb:le_make_terrain_vb(),
-    x:0,y:0,z:0, rx:0,ry:0,rz:0, sx:1,sy:1,sz:1, name:"Terrain match", col:c_white});
+// Terrain de match par défaut (su_ter1 texture, shd_floor) - seulement si aucun niveau n'a été chargé
+if (!le_level_loaded) {
+    array_push(le_objects, {type:"terrain", vb:le_make_terrain_vb(),
+        x:0,y:0,z:0, rx:0,ry:0,rz:0, sx:1,sy:1,sz:1, name:"Terrain match", col:c_white});
+}
 
 // Timer animation personnages
 le_anim_t = 0.0;

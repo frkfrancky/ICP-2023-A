@@ -4,6 +4,7 @@
 /// @return {array} Array d'objets créés
 
 function level_loader(_filename) {
+    // Les fichiers JSON sont dans le répertoire de travail courant
     if (!file_exists(_filename)) {
         show_error("Fichier niveau non trouvé: " + _filename, true);
         return [];
@@ -21,6 +22,7 @@ function level_loader(_filename) {
     var _sdata = json_parse(_json_str);
 
     var _result = [];
+    var _obj_count = 0;
 
     // Parcourir les objets chargés directement par index
     for (var _i = 0; _i < 100; _i++) {
@@ -33,10 +35,16 @@ function level_loader(_filename) {
         if (is_undefined(_obj)) continue;
 
         // Créer un struct avec toutes les propriétés
+        // Ajouter offset Z négatif pour les objets chargés (sauf terrain)
+        var _z = _obj.z;
+        if (_obj.type != "terrain") {
+            _z = -_obj.z - 100;  // Inverser et offset négatif pour placer au-dessus du terrain
+        }
+
         var _o = {
             type: _obj.type,
             name: _obj.name,
-            x: _obj.x, y: _obj.y, z: _obj.z,
+            x: _obj.x, y: _obj.y, z: _z,
             rx: _obj.rx, ry: _obj.ry, rz: _obj.rz,
             sx: _obj.sx, sy: _obj.sy, sz: _obj.sz,
             col: _obj.col,
@@ -51,7 +59,24 @@ function level_loader(_filename) {
         }
 
         if (_obj.type == "terrain") {
-            _o.vb = create_terrain_vb(_obj.sx * 200, _obj.sy * 200);
+            // Pour les terrains, utiliser le même vertex buffer que le terrain par défaut
+            // avec les mêmes UV coordinates de su_ter1
+            var _hw = 700 * _obj.sx;
+            var _hd = 400 * _obj.sy;
+            var _vb = vertex_create_buffer();
+            vertex_begin(_vb, global.vFormat);
+            var _uvs = sprite_get_uvs(su_ter1, 0);
+            var _u0 = _uvs[0]; var _v0 = _uvs[1];
+            var _u1 = _uvs[2]; var _v1 = _uvs[3];
+            vertex_position_3d(_vb,-_hw,-_hd,0); vertex_texcoord(_vb,_u0,_v0); vertex_color(_vb,c_white,1.0);
+            vertex_position_3d(_vb, _hw,-_hd,0); vertex_texcoord(_vb,_u1,_v0); vertex_color(_vb,c_white,1.0);
+            vertex_position_3d(_vb, _hw, _hd,0); vertex_texcoord(_vb,_u1,_v1); vertex_color(_vb,c_white,1.0);
+            vertex_position_3d(_vb,-_hw,-_hd,0); vertex_texcoord(_vb,_u0,_v0); vertex_color(_vb,c_white,1.0);
+            vertex_position_3d(_vb, _hw, _hd,0); vertex_texcoord(_vb,_u1,_v1); vertex_color(_vb,c_white,1.0);
+            vertex_position_3d(_vb,-_hw, _hd,0); vertex_texcoord(_vb,_u0,_v1); vertex_color(_vb,c_white,1.0);
+            vertex_end(_vb);
+            vertex_freeze(_vb);
+            _o.vb = _vb;
         }
 
         if (_obj.type == "char") {
@@ -65,7 +90,10 @@ function level_loader(_filename) {
         }
 
         array_push(_result, _o);
+        _obj_count++;
+        show_debug_message("  obj_" + string(_i) + ": type=" + _o.type + ", vb=" + string(_o.vb) + ", pos=(" + string(_o.x) + "," + string(_o.y) + "," + string(_o.z) + ")");
     }
 
+    show_debug_message("Level loader: " + string(_obj_count) + " objets chargés au total");
     return _result;
 }
