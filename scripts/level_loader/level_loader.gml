@@ -51,7 +51,11 @@ function level_loader(_filename) {
         }
 
         if (_obj.type == "terrain") {
-            _o.vb = create_terrain_vb(_obj.sx * 2, _obj.sy * 2);
+            _o.vb = create_terrain_vb(_obj.sx * 200, _obj.sy * 200);
+        }
+
+        if (_obj.type == "char") {
+            _o.vb = create_character_vb(_obj.sx * 30, _obj.sz * 80);
         }
 
         // Propriétés optionnelles pour lumières

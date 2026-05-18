@@ -151,6 +151,44 @@ if (instance_exists(o_match_setup) && array_length(o_match_setup.level_objects) 
     matrix_set(matrix_world, matrix_build_identity());
     shader_reset();
 
+    // Rendu personnages
+    shader_set(Shader1);
+    shader_set_uniform_f_array(u_ldir, lit_dir);
+    shader_set_uniform_f_array(u_lcol, lit_color);
+    shader_set_uniform_f(u_lamb, lit_amb);
+    shader_set_uniform_f(u_lrim, lit_rim);
+    shader_set_uniform_f_array(u_pl0, _pls_pos[0]);
+    shader_set_uniform_f_array(u_pl1, _pls_pos[1]);
+    shader_set_uniform_f_array(u_sprpos, [0,0,0]);
+    shader_set_uniform_f(u_flat_normal, 0.0);
+    shader_set_uniform_f(u_shadow_en, shadow_enable ? 1.0 : 0.0);
+    shader_set_uniform_f(u_shadow_dark, shadow_darkness);
+    shader_set_uniform_f(u_shadow_bias, shadow_bias);
+    shader_set_uniform_f(u_shadow_recv, 1.0);
+    shader_set_uniform_f_array(u_litPos, lit_pos);
+    shader_set_uniform_f_array(u_litRight, lit_right);
+    shader_set_uniform_f_array(u_litUp, lit_up);
+    shader_set_uniform_f_array(u_litFwd, lit_fwd);
+    shader_set_uniform_f(u_litHW, lit_hw);
+    shader_set_uniform_f(u_litHH, lit_hh);
+    shader_set_uniform_f(u_litFar, lit_far);
+    if (shadow_enable && surface_exists(shadow_surf))
+        texture_set_stage(u_shadow_samp, surface_get_texture(shadow_surf));
+
+    for (var _oi = 0; _oi < array_length(_objs); _oi++) {
+        var _o = _objs[_oi];
+        if (_o.type != "char" || _o.vb < 0) continue;
+        var _r = color_get_red(_o.col)/255;
+        var _g = color_get_green(_o.col)/255;
+        var _b = color_get_blue(_o.col)/255;
+        shader_set_uniform_f_array(u_lcol, [lit_color[0]*_r, lit_color[1]*_g, lit_color[2]*_b]);
+        matrix_set(matrix_world, matrix_build(_o.x, _o.y, _o.z, _o.rx, _o.ry, _o.rz, _o.sx, _o.sy, _o.sz));
+        vertex_submit(_o.vb, pr_trianglelist, -1);
+    }
+
+    matrix_set(matrix_world, matrix_build_identity());
+    shader_reset();
+
     // Rendu terrain avec shd_floor
     for (var _oi = 0; _oi < array_length(_objs); _oi++) {
         var _o = _objs[_oi];
@@ -159,6 +197,9 @@ if (instance_exists(o_match_setup) && array_length(o_match_setup.level_objects) 
         shader_set_uniform_f_array(u_fldir, lit_dir);
         shader_set_uniform_f_array(u_flcol, lit_color);
         shader_set_uniform_f(u_flamb, lit_amb);
+        // Try to set point light uniforms if they exist
+        if (u_pl0 >= 0) shader_set_uniform_f_array(u_pl0, _pls_pos[0]);
+        if (u_pl1 >= 0) shader_set_uniform_f_array(u_pl1, _pls_pos[1]);
         matrix_set(matrix_world, matrix_build(_o.x, _o.y, _o.z, _o.rx, _o.ry, _o.rz, _o.sx, _o.sy, _o.sz));
         vertex_submit(_o.vb, pr_trianglelist, sprite_get_texture(su_ter1, 0));
         matrix_set(matrix_world, matrix_build_identity());
