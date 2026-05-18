@@ -1,4 +1,4 @@
-/// Create a simple cube vertex buffer (matching o_level's le_make_cube_vb)
+/// Create a simple cube vertex buffer with neutral color (let shader handle lighting)
 function create_cube_vb(_hw) {
     if (!variable_global_exists("vFormat")) {
         vertex_format_begin();
@@ -31,14 +31,12 @@ function create_cube_vb(_hw) {
         var _nx = _cn[_fi][0];
         var _ny = _cn[_fi][1];
         var _nz = _cn[_fi][2];
-        // Encode normal into color for basic shading (same as o_level)
-        var _col2 = make_color_rgb(round((_nz*0.5+0.5)*255), 128, 128);
 
         for (var _vi = 0; _vi < 6; _vi++) {
             var _idx = _cf[_fi][_vi];
             vertex_position_3d(_vb, _cv[_idx][0], _cv[_idx][1], _cv[_idx][2]);
             vertex_texcoord(_vb, _nx*0.5+0.5, _ny*0.5+0.5);
-            vertex_color(_vb, _col2, 1.0);
+            vertex_color(_vb, c_white, 1.0);  // Use white - let shader handle color
         }
     }
 
@@ -124,7 +122,6 @@ function create_character_vb(_radius, _height) {
     vertex_begin(_vb, global.vFormat);
 
     var _segs = 8;
-    var _col = make_color_rgb(220, 140, 80); // character skin color
 
     // Cylinder body
     for (var _i = 0; _i < _segs; _i++) {
@@ -138,28 +135,28 @@ function create_character_vb(_radius, _height) {
         // Bottom triangle
         vertex_position_3d(_vb, _x0, _y0, 0);
         vertex_texcoord(_vb, _i / _segs, 0);
-        vertex_color(_vb, _col, 1.0);
+        vertex_color(_vb, c_white, 1.0);
 
         vertex_position_3d(_vb, _x1, _y1, 0);
         vertex_texcoord(_vb, (_i+1) / _segs, 0);
-        vertex_color(_vb, _col, 1.0);
+        vertex_color(_vb, c_white, 1.0);
 
         vertex_position_3d(_vb, _x1, _y1, _height);
         vertex_texcoord(_vb, (_i+1) / _segs, 1);
-        vertex_color(_vb, _col, 1.0);
+        vertex_color(_vb, c_white, 1.0);
 
         // Top triangle
         vertex_position_3d(_vb, _x0, _y0, 0);
         vertex_texcoord(_vb, _i / _segs, 0);
-        vertex_color(_vb, _col, 1.0);
+        vertex_color(_vb, c_white, 1.0);
 
         vertex_position_3d(_vb, _x1, _y1, _height);
         vertex_texcoord(_vb, (_i+1) / _segs, 1);
-        vertex_color(_vb, _col, 1.0);
+        vertex_color(_vb, c_white, 1.0);
 
         vertex_position_3d(_vb, _x0, _y0, _height);
         vertex_texcoord(_vb, _i / _segs, 1);
-        vertex_color(_vb, _col, 1.0);
+        vertex_color(_vb, c_white, 1.0);
     }
 
     // Top cap
@@ -173,15 +170,15 @@ function create_character_vb(_radius, _height) {
 
         vertex_position_3d(_vb, 0, 0, _height);
         vertex_texcoord(_vb, 0.5, 0.5);
-        vertex_color(_vb, _col, 1.0);
+        vertex_color(_vb, c_white, 1.0);
 
         vertex_position_3d(_vb, _x0, _y0, _height);
         vertex_texcoord(_vb, 0.5 + cos(_a0)*0.5, 0.5 + sin(_a0)*0.5);
-        vertex_color(_vb, _col, 1.0);
+        vertex_color(_vb, c_white, 1.0);
 
         vertex_position_3d(_vb, _x1, _y1, _height);
         vertex_texcoord(_vb, 0.5 + cos(_a1)*0.5, 0.5 + sin(_a1)*0.5);
-        vertex_color(_vb, _col, 1.0);
+        vertex_color(_vb, c_white, 1.0);
     }
 
     vertex_end(_vb);
