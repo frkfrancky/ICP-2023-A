@@ -184,6 +184,7 @@
     {"id":{"name":"vertex_create_face","path":"scripts/vertex_create_face/vertex_create_face.yy",},"order":3,},
     {"id":{"name":"level_loader","path":"scripts/level_loader/level_loader.yy",},"order":4,},
     {"id":{"name":"spawn_level_objects","path":"scripts/spawn_level_objects/spawn_level_objects.yy",},"order":5,},
+    {"id":{"name":"create_cube_vb","path":"scripts/create_cube_vb/create_cube_vb.yy",},"order":6,},
     {"id":{"name":"o_cc","path":"objects/o_cc/o_cc.yy",},"order":0,},
     {"id":{"name":"o_p","path":"objects/o_p/o_p.yy",},"order":1,},
     {"id":{"name":"o_c_editor","path":"objects/o_c_editor/o_c_editor.yy",},"order":0,},
