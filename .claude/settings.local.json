@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(git add *)",
-      "Bash(git commit -m 'Implement 3D level object rendering in test room *)"
+      "Bash(git commit -m 'Implement 3D level object rendering in test room *)",
+      "Bash(git commit -m 'Register create_cube_vb script in project *)"
     ]
   }
 }
