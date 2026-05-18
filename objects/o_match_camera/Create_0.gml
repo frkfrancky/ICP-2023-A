@@ -62,6 +62,8 @@ u_pl2col      = shader_get_uniform(Shader1, "u_pl2col");
 u_pl2rad      = shader_get_uniform(Shader1, "u_pl2rad");
 u_sprpos      = shader_get_uniform(Shader1, "u_sprpos");
 u_flat_normal = shader_get_uniform(Shader1, "u_flat_normal");
+u_plcol       = shader_get_uniform(Shader1, "u_plcol");
+u_plrad       = shader_get_uniform(Shader1, "u_plrad");
 
 // Floor
 u_fldir = shader_get_uniform(shd_floor, "u_lightDir");

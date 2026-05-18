@@ -52,6 +52,11 @@ if (instance_exists(o_match_camera)) {
 	u_lrim = o_match_camera.u_lrim;
 	u_pl0 = o_match_camera.u_pl0;
 	u_pl1 = o_match_camera.u_pl1;
+	u_pl0col = o_match_camera.u_pl0col;
+	u_pl1col = o_match_camera.u_pl1col;
+	u_pl2 = o_match_camera.u_pl2;
+	u_pl2col = o_match_camera.u_pl2col;
+	u_pl2rad = o_match_camera.u_pl2rad;
 	u_plcol = o_match_camera.u_plcol;
 	u_plrad = o_match_camera.u_plrad;
 	u_sprpos = o_match_camera.u_sprpos;
