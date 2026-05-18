@@ -27,8 +27,10 @@ cam_surf_h   = surface_get_height(application_surface);
 
 
 gpu_set_ztestenable(true);
+gpu_set_zwriteenable(true);
 gpu_set_alphatestenable(true);
 gpu_set_texrepeat(true);
+gpu_set_cullmode(cull_noculling);
 
 // ═══════════════════════════════════════════════════════
 // SHADOW MAP PASS (si activé)

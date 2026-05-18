@@ -46,7 +46,7 @@ function level_loader(_filename) {
         // Créer vertex buffers pour les objets rendus
         if (_obj.type == "mesh") {
             var _scale = max(_obj.sx, max(_obj.sy, _obj.sz));
-            _o.vb = create_cube_vb(_scale * 50, _obj.col);
+            _o.vb = create_cube_vb(_scale * 50);
             if (variable_struct_exists(_obj, "tex_spr")) _o.tex_spr = _obj.tex_spr;
         }
 

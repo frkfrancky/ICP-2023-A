@@ -1,5 +1,5 @@
-/// Create a simple cube vertex buffer
-function create_cube_vb(_hw, _col) {
+/// Create a simple cube vertex buffer (matching o_level's le_make_cube_vb)
+function create_cube_vb(_hw) {
     if (!variable_global_exists("vFormat")) {
         vertex_format_begin();
         vertex_format_add_position_3d();
@@ -31,13 +31,14 @@ function create_cube_vb(_hw, _col) {
         var _nx = _cn[_fi][0];
         var _ny = _cn[_fi][1];
         var _nz = _cn[_fi][2];
+        // Encode normal into color for basic shading (same as o_level)
         var _col2 = make_color_rgb(round((_nz*0.5+0.5)*255), 128, 128);
 
         for (var _vi = 0; _vi < 6; _vi++) {
             var _idx = _cf[_fi][_vi];
             vertex_position_3d(_vb, _cv[_idx][0], _cv[_idx][1], _cv[_idx][2]);
             vertex_texcoord(_vb, _nx*0.5+0.5, _ny*0.5+0.5);
-            vertex_color(_vb, _col, 1.0);
+            vertex_color(_vb, _col2, 1.0);
         }
     }
 
