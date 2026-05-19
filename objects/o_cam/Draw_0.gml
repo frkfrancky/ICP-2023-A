@@ -1,11 +1,4 @@
-/// o_cam draw - empty in match room, full render in other rooms
-if (room_get_name(room) == "r_match_game") {
-	// Match room uses o_match_camera for rendering
-	exit;
-}
-
-// ========== REGULAR GAME RENDERING (non-match rooms) ==========
-
+/// o_cam draw
 var camera= camera_get_active();
 
 z_target = zt_p;
@@ -29,6 +22,12 @@ gpu_set_alphatestenable(true);
 gpu_set_texrepeat(true);
 gpu_set_cullmode(cull_noculling);
 
+// Skip scene rendering in match room - o_match_camera handles 3D level rendering
+if (room_get_name(room) == "r_match_game") {
+	// Don't render the scene, just set up camera for 2D match objects
+	exit;
+}
+
 // ═══════════════════════════════════════════════════════
 // SHADOW MAP PASS (si activé)
 // ═══════════════════════════════════════════════════════
@@ -37,11 +36,10 @@ if (shadow_enable && instance_exists(o_match_setup) && array_length(o_match_setu
         shadow_surf = surface_create(shadow_sz, shadow_sz);
 
     var _objs = o_match_setup.level_objects;
-    var _ld = lit_dir;  // direction vers le soleil
+    var _ld = lit_dir;
     var _sd = 1500;
     lit_pos = [_ld[0]*_sd, _ld[1]*_sd, _ld[2]*_sd];
 
-    // Calculer base orthonormée
     var _fx = -_ld[0]; var _fy = -_ld[1]; var _fz = -_ld[2];
     var _wux = 0.0; var _wuy = 0.0; var _wuz = 1.0;
     if (abs(_ld[2]) > 0.85) { _wux = 1.0; _wuz = 0.0; }
@@ -59,7 +57,6 @@ if (shadow_enable && instance_exists(o_match_setup) && array_length(o_match_setu
     lit_up = [_up_x, _up_y, _up_z];
     lit_fwd = [_fx, _fy, _fz];
 
-    // Render shadow map
     surface_set_target(shadow_surf);
     draw_clear_alpha(c_black, 1);
     shader_set(shd_shadow);
@@ -88,7 +85,6 @@ shader_set_uniform_f(u_lrim, lit_rim);
 shader_set_uniform_f(u_sprpos, x, y);
 shader_set_uniform_f(u_flat_normal, 0.0);
 
-// Setup shadow uniforms
 if (shadow_enable && surface_exists(shadow_surf)) {
     shader_set_uniform_f_array(u_litPos, lit_pos);
     shader_set_uniform_f_array(u_litRight, lit_right);
