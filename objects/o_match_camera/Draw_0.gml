@@ -1,3 +1,5 @@
+draw_clear(c_black);
+
 var camera = camera_get_active();
 camera_set_view_mat(camera, matrix_build_lookat(640, 360, 1000, 0, 0, 0, 0, 0, 1));
 var _asp = surface_get_width(application_surface) / surface_get_height(application_surface);

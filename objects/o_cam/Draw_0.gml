@@ -1,5 +1,5 @@
 /// o_cam draw - empty in match room, full render in other rooms
-if (room == r_match_game) {
+if (room_get_name(room) == "r_match_game") {
 	// Match room uses o_match_camera for rendering
 	exit;
 }
