@@ -1,4 +1,11 @@
 /// o_cam draw
+// In match room, objects don't exist yet - skip camera setup
+if (room_get_name(room) == "r_match_game") {
+	if (!instance_exists(o_target) || !instance_exists(o_b)) {
+		exit;
+	}
+}
+
 var camera= camera_get_active();
 
 z_target = zt_p;
