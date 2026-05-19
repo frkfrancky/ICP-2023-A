@@ -1,12 +1,16 @@
 /// o_cam draw
-// In match room, objects don't exist yet - skip camera setup
-if (room_get_name(room) == "r_match_game") {
-	if (!instance_exists(o_target) || !instance_exists(o_b)) {
-		exit;
-	}
-}
-
 var camera= camera_get_active();
+
+// In match room: set up 2D camera for match objects to render on top of 3D level
+if (room_get_name(room) == "r_match_game") {
+	// Simple 2D orthographic view for match objects
+	var _w = surface_get_width(application_surface);
+	var _h = surface_get_height(application_surface);
+	camera_set_view_mat(camera, matrix_build_identity());
+	camera_set_proj_mat(camera, matrix_build_projection_ortho(0, _w, _h, 0, -100, 100));
+	camera_apply(camera);
+	exit;
+}
 
 z_target = zt_p;
 
