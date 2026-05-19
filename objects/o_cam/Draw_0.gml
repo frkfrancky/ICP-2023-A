@@ -1,13 +1,8 @@
 /// o_cam draw
 var camera= camera_get_active();
 
-// In match room: set up 2D camera for match objects to render on top of 3D level
+// In match room: just apply default camera for 2D objects
 if (room_get_name(room) == "r_match_game") {
-	// Simple 2D orthographic view for match objects
-	var _w = surface_get_width(application_surface);
-	var _h = surface_get_height(application_surface);
-	camera_set_view_mat(camera, matrix_build_identity());
-	camera_set_proj_mat(camera, matrix_build_projection_ortho(0, 0, _w, _h, -1, 1));
 	camera_apply(camera);
 	exit;
 }
