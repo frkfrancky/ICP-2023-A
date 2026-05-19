@@ -7,7 +7,7 @@ if (room_get_name(room) == "r_match_game") {
 	var _w = surface_get_width(application_surface);
 	var _h = surface_get_height(application_surface);
 	camera_set_view_mat(camera, matrix_build_identity());
-	camera_set_proj_mat(camera, matrix_build_projection_ortho(0, _w, _h, 0, -100, 100));
+	camera_set_proj_mat(camera, matrix_build_projection_ortho(0, 0, _w, _h, -1, 1));
 	camera_apply(camera);
 	exit;
 }
