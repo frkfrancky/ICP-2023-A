@@ -31,6 +31,7 @@ gpu_set_zwriteenable(true);
 gpu_set_cullmode(cull_noculling);
 
 // Shader lumière
+// test
 shader_set(Shader1);
 shader_set_uniform_f_array(le_u_ldir,  le_lit_dir);
 shader_set_uniform_f_array(le_u_lcol,  le_lit_color);
