@@ -1,63 +1,3 @@
-// Alias pour compatibilité avec le code de o_level
-le_objects = match_objects;
-le_shadow_enable = shadow_enable;
-le_shadow_surf = shadow_surf;
-le_shadow_sz = shadow_sz;
-le_lit_dir = lit_dir;
-le_lit_color = lit_color;
-le_lit_amb = lit_amb;
-le_lit_rim = lit_rim;
-le_day_hour = day_hour;
-le_anim_t = 0; // pas d'animation pour match
-le_viewport_w = display_get_width();
-le_viewport_h = display_get_height();
-le_surf = match_surf;
-le_cam_angle = 30.0;
-le_cam_yaw = 45.0;
-le_cam_cx = 0;
-le_cam_cy = 0;
-le_cam_cz = 0;
-le_cam_dist = 1000;
-le_cam_fov = 45;
-le_lit_pos = lit_pos;
-le_lit_right = lit_right;
-le_lit_up = lit_up;
-le_lit_fwd = lit_fwd;
-le_lit_hw = lit_hw;
-le_lit_hh = lit_hh;
-le_lit_far = lit_far;
-// Shader uniforms (directional + point lights + shadow)
-le_u_ldir = u_ldir;
-le_u_lcol = u_lcol;
-le_u_lamb = u_lamb;
-le_u_lrim = u_lrim;
-le_u_pl0 = u_pl0;
-le_u_pl1 = u_pl1;
-le_u_pl0col = u_pl0col;
-le_u_pl1col = u_pl1col;
-le_u_pl2 = u_pl2;
-le_u_pl2col = u_pl2col;
-le_u_pl2rad = u_pl2rad;
-le_u_plcol = u_plcol;
-le_u_plrad = u_plrad;
-le_u_sprpos = u_sprpos;
-le_u_flat_normal = u_flat_normal;
-le_u_fldir = u_fldir;
-le_u_flcol = u_flcol;
-le_u_flamb = u_flamb;
-le_u_shadow_samp = u_shadow_samp;
-le_u_shadow_en = u_shadow_en;
-le_u_shadow_dark = u_shadow_dark;
-le_u_shadow_bias = u_shadow_bias;
-le_u_shadow_recv = u_shadow_recv;
-le_u_sh_litPos = u_litPos;
-le_u_sh_litRight = u_litRight;
-le_u_sh_litUp = u_litUp;
-le_u_sh_litFwd = u_litFwd;
-le_u_sh_litHW = u_litHW;
-le_u_sh_litHH = u_litHH;
-le_u_sh_litFar = u_litFar;
-
 var _sw = display_get_gui_width();
 var _sh = display_get_gui_height();
 
@@ -455,7 +395,8 @@ if (variable_global_exists("char_parts")) {
 }
 
 // Grille
-vertex_submit(le_grid_vb, pr_linelist, -1);
+if (le_grid_vb >= 0)
+    vertex_submit(le_grid_vb, pr_linelist, -1);
 
 // Gizmos lumières — croix 3D en vertex buffer temporaire
 for (var _oi = 0; _oi < array_length(le_objects); _oi++) {
